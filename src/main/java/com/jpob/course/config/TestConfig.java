@@ -8,9 +8,11 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 
+import com.jpob.course.entities.Category;
 import com.jpob.course.entities.Order;
 import com.jpob.course.entities.User;
 import com.jpob.course.entities.enums.OrderStatus;
+import com.jpob.course.repositories.CategoryRepository;
 import com.jpob.course.repositories.OrderRepository;
 import com.jpob.course.repositories.UserRepository;
 
@@ -23,16 +25,25 @@ public class TestConfig implements CommandLineRunner{
 	
 	@Autowired
 	private OrderRepository orderRepository; 
+	
+	@Autowired
+	private CategoryRepository categoryRepository;
 
 	@Override
 	public void run(String... args) throws Exception {
+		
+		Category cat1 = new Category(null, "Electronics");
+		Category cat2 = new Category(null, "Books");
+		Category cat3 = new Category(null, "Computers");
+		
+		categoryRepository.saveAll(Arrays.asList(cat1, cat2, cat3));
 		
 		User u1 = new User(null, "Maria", "maria@gmail.com", "984632315", "12345678");
 		User u2 = new User(null, "Joao", "joao@gmail.com", "992787562", "87654321");
 		
 		Order o1 = new Order(null, Instant.parse("2024-06-20T19:53:07Z"), OrderStatus.PAID, u1);
 		Order o2 = new Order(null, Instant.parse("2024-07-21T03:42:10Z"), OrderStatus.WAITING_PAYMENT, u2);
-		Order o3 = new Order(null, Instant.parse("2024-07-22T15:21:22Z"), OrderStatus.WAITING_PAYMENT, u1); 
+		Order o3 = new Order(null, Instant.parse("2024-07-22T15:21:22Z"), OrderStatus.WAITING_PAYMENT, u1);
 		
 		userRepository.saveAll(Arrays.asList(u1, u2));
 		
