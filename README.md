@@ -61,12 +61,12 @@ Este projeto é uma aplicação de e-commerce desenvolvida com Spring Boot. A ap
 1. **Clone o repositório:**
 
    ```bash
-   git clone https://github.com/seu-usuario/seu-repositorio.git
+   git clone https://github.com/Iohanan-Cephas/workshop-springboot3.3.1-jpa.git
    ```
 
 2. **Navegue até o diretório do projeto:**
    ```bash
-   cd seu-repositorio
+   cd workshop-springboot3.3.1-jpa
    ```
 
 3. **Construa o projeto:**
